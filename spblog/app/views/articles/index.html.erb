@@ -1,0 +1,32 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Articles</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Post</th>
+      <th>User</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @articles.each do |article| %>
+      <tr class="<%= cycle('list_line_odd','list_line_even')%>">
+        <td><%= article.title %></td>
+        <td><%= article.post %></td>
+        <td><%= article.user_id %></td>
+        <td><%= link_to 'Document', downloadDoc_url(id: article.title) %></td>
+        <td><%= link_to 'PDF', downloadZip_url(id: article.title) %></td>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<br />
+<br>
+<%= link_to 'New Article', new_article_path %>
+
+

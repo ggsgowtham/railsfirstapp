@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Listing Articles</h1>
+<h1>Articles</h1>
 
 <table>
   <thead>
@@ -15,11 +15,11 @@
   <tbody>
     <% @articles.each do |article| %>
       <tr class="<%= cycle('list_line_odd','list_line_even')%>">
+        <td><%= article.id %></td>
         <td><%= article.title %></td>
         <td><%= article.post %></td>
-        <td><%= article.user_id %></td>
-        <td><%= link_to 'Document', downloadDoc_url(id: article.title) %></td>
-        <td><%= link_to 'PDF', downloadZip_url(id: article.title) %></td>
+        <td><%= link_to 'Document', downloadDoc_url(id: article.id) %></td>
+        <td><%= link_to 'PDF', downloadZip_url(id: article.id) %></td>
         </td>
       </tr>
     <% end %>
@@ -27,6 +27,9 @@
 </table>
 <br />
 <br>
+
 <%= link_to 'New Article', new_article_path %>
+
+<%= link_to 'Downloads Statistics', '/downloads/statistics' %>
 
 

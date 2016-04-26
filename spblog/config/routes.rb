@@ -1,7 +1,17 @@
 Rails.application.routes.draw do
 
+ resources :sessions
+
+get 'signup' , to: 'users#new', as: 'signup'
+get 'login' , to: 'sessions#new', as: 'login'
+get 'logout' , to: 'sessions#destroy', as: 'logout'
+  
+
+  get 'downloads/statistics'
+
   get "articles/:id/zip" => 'articles#zip', as: :downloadZip
   get "articles/:id/doc" => 'articles#doc', as: :downloadDoc
+
 
 
 
@@ -17,7 +27,8 @@ end
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  root 'users#new'
+
+  root 'sessions#new'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

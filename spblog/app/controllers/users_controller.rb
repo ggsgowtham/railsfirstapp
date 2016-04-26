@@ -13,6 +13,9 @@ class UsersController < ApplicationController
 
   # GET /users/new
   def new
+    if session[:user_id]
+      redirect_to '/articles'
+    end  
     @user = User.new
   end
 
@@ -55,7 +58,7 @@ class UsersController < ApplicationController
   def destroy
     @user.destroy
     respond_to do |format|
-      format.html { redirect_to users_url, notice: 'User was successfully destroyed.' }
+      format.html { redirect_to @user, notice: 'User was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

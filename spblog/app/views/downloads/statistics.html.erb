@@ -1,0 +1,28 @@
+<h1>Statistics</h1>
+<div>
+	<%= image_tag @testGraph %>
+</div>
+
+<div>
+
+<table>
+  <thead>
+    <tr>
+      <th>Article Name</th>
+      <th>Downloads Count</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @stats.each do |stat1| %>
+      <tr class="<%= cycle('list_line_odd','list_line_even')%>">
+        <td><%= stat1.title %></td>
+        <td><%= stat1.count %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>  
+</div>
+<br />
+
+<%= link_to 'Back', articles_path %>

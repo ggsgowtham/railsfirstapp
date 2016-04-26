@@ -3,6 +3,9 @@ class ArticlesController < ApplicationController
   # GET /articles
   # GET /articles.json
   def index
+    if !session[:user_id]
+       redirect_to '/login'
+    end  
     @articles = Article.all
   end
 
@@ -13,6 +16,9 @@ class ArticlesController < ApplicationController
 
   # GET /articles/new
   def new
+    if !session[:user_id]
+       redirect_to '/login'
+    end  
     @article = Article.new
   end
 
@@ -22,10 +28,14 @@ class ArticlesController < ApplicationController
 
 
   def zip
-   send_file Rails.root.join('private', 'fees.pdf'), :type=>"application/pdf", :x_sendfile=>true  
+    @fileId = params[:id]
+    @downloads = Download.new(:article_id => @fileId, :user_id => session[:user_id]).save
+    send_file Rails.root.join('private', 'fees.pdf'), :type=>"application/pdf", :x_sendfile=>true  
   end
 
   def doc
+   @fileId = params[:id]
+   @downloads = Download.new(:article_id => @fileId, :user_id => session[:user_id]).save
    send_file Rails.root.join('private', 'gowtham_resume.doc'), :type=>"application/doc", :x_sendfile=>true  
   end
 
@@ -37,7 +47,7 @@ class ArticlesController < ApplicationController
 
     respond_to do |format|
       if @article.save
-        format.html { redirect_to @article, notice: 'Article was successfully created.' }
+        format.html { redirect_to '/articles', notice: 'Article was successfully created.' }
         format.json { render :show, status: :created, location: @article }
       else
         format.html { render :new }
@@ -80,4 +90,6 @@ class ArticlesController < ApplicationController
     def article_params
       params.require(:article).permit(:title, :post, :user_id)
     end
+
+   
 end

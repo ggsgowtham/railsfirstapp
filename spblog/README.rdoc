@@ -1,4 +1,4 @@
-<strong>How the make the application work </strong>
+How the make the application work 
 
 
 Download the application 

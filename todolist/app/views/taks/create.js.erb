@@ -1,0 +1,6 @@
+console.log('coems here');
+$('#new_tak').remove();
+$('#new_link').show();
+$('#incomplete_tasks').append('<%= j render(@tak) %>');
+
+$('#edit_tak_<%= @tak.id %>').submitOnCheck();

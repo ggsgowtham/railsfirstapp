@@ -1,0 +1,47 @@
+
+<p id="notice"><%= notice %></p>
+
+<div class="panel panel-default">
+	<div class="panel-body" >
+		<div class="pull-left">
+		<%= link_to 'Create Task', new_tak_path, id: "new_link", remote: true,class: "btn btn-primary"   %>
+		</div>
+		<div class="pull-right">
+		<% if(@incomplete_tasks.length > 0) %>	
+			<label class="text-muted">Items Left: </label>	
+			<span class="badge" id="itemsLeftCount">
+				<%= @incomplete_tasks.length %>
+			</span>	
+		<% end %>	
+		<%= link_to 'All', "javasciprt:;", id: "all_tasks", remote: true, class: "btn btn-default"%>
+		<%= link_to 'Active', "javasciprt:;", id: "active_tasks", remote: true, class: "btn btn-success"%>
+		<%= link_to 'Completed', "javasciprt:;", id: "completed_tasks", remote: true, class: "btn btn-danger"%>
+		</div>
+	</div>
+</div>	
+
+<div class="panel panel-success" id="incomplete_panel">
+	<div class="panel-heading">
+		<h3>Active Tasks</h3>	
+	</div>
+	<div class="panel-body tasks" id="incomplete_tasks">
+		<% if(@incomplete_tasks.length > 0) %>	
+			<%= render @incomplete_tasks %>
+		<% else %>
+			<p class="text-muted">Currently no active tasks! craete one</p>
+		<% end %>
+	</div>
+</div>
+
+<div class="panel panel-danger" id="complete_panel">
+	<div class="panel-heading">
+		<h3>Completed Tasks</h3>	
+	</div>
+	<div class="panel-body tasks" id="complete_tasks">
+		<% if(@complete_tasks.length > 0) %>	
+		<%= render @complete_tasks %>
+		<% else %>
+			<p class="text-muted">Currently no completed tasks left! </p>
+		<% end %>
+	</div>
+</div>

@@ -1,0 +1,9 @@
+<%= form_for(@tak, :remote=> true) do |f| %> 
+  <div class="field">
+    <%= f.label :name %><br>
+    <%= f.text_field :name, class: "form-control" %>
+  </div>
+  <div class="action">
+    <%= f.submit  class: "btn btn-default" %>
+  </div>
+<% end %>

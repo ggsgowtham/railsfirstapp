@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @tak.name %>
+</p>
+
+<p>
+  <strong>Complete:</strong>
+  <%= @tak.complete %>
+</p>
+
+<%= link_to 'Edit', edit_tak_path(@tak) %> |
+<%= link_to 'Back', taks_path %>

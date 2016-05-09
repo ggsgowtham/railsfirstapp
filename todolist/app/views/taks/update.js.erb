@@ -1,0 +1,15 @@
+//for removing the text box on the fly and creating label
+
+var spanInput = $('#edit_tak_<%= @tak.id %>').find('span .editForm'),
+	textValue = spanInput.val(),
+	html = '<label for="complete_<%= @tak.id %>">'+ textValue +'</label>';
+if(textValue && textValue.length > 0){
+	$('#edit_tak_<%= @tak.id %>').find('span.taskName').html(html);
+}
+	
+
+<% if @tak.complete? %>
+  $('#edit_tak_<%= @tak.id %>').appendTo('#complete_tasks').find("span.taskName").addClass('strikeThrough');
+<% else %>
+  $('#edit_tak_<%= @tak.id %>').appendTo('#incomplete_tasks').find("span.strikeThrough").removeClass("strikeThrough");
+<% end %>

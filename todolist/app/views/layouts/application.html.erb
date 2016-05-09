@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Todolist</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,400,500,700" type="text/css">
+<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+
+</head>
+<body>
+
+<div class="panel panel-default">
+	<div class="panel-heading">
+		<h2>Make your own todo Lists</h2>
+	</div>
+	<div class="panel-body">
+	<%= yield %>
+</div>
+</div>
+<footer class="footer">
+  <div class="container" style="padding-bottom:2%;">
+    <span class="text-muted pull-left">
+    	Created by Gowtham GGS
+    </span>
+    <span class="pull-right">
+    	<a href="https://github.com/ggsgowtham/todolist" target="_blank">Github</a>
+    </span>
+  </div>
+</footer>
+
+
+</body>
+</html>

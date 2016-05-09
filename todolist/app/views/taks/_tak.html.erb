@@ -1,0 +1,14 @@
+<ul class="list-group">
+<%= form_for tak, remote: true do |f| %>
+  <li class="list-group-item">
+  	<%= f.check_box :complete %>
+  	<span class="taskName <%= 'strikeThrough' if tak.complete %>">
+  		<%= label :complete, tak.name %>
+  	</span>
+  	<span  class="pull-right">
+  	<%= link_to '<i class="glyphicon glyphicon-trash"></i>'.html_safe ,tak, method: :delete, data: {confirm: "Are you sure?"}, remote: true %>
+  </span>
+</li>
+<% end %>
+</ul>
+
